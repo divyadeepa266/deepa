@@ -888,103 +888,114 @@ public class ListInterfaceImplent implements ListInterFaces{
 	@Override
 	public void AddUpdateItem(File ItemFile, File UserF, File BinFile, File ItemBinFile) {
 		// TODO Auto-generated method stub
-		System.out.println("Enter Item");
 		List<ItemListDeepa> ItemList=new ArrayList();
 		List<ItemListDeepa> UpdateItemList=new ArrayList();
+		ItemListDeepa il=new ItemListDeepa();
 
+		boolean AddBool=false;
 		try {
 			FileInputStream fisIte = new FileInputStream(ItemFile);
 			ObjectInputStream oisIte=new ObjectInputStream(fisIte);
-			ItemList=(ArrayList)oisIte.readObject();
+			UpdateItemList=(ArrayList)oisIte.readObject();
 			oisIte.close();fisIte.close();
 		} catch (IOException | ClassNotFoundException e1) {
-			ItemList=new ArrayList();
-		}	
-		if(ItemList.size()!=0) {
-			for(int i=0;i<ItemList.size();i++) {
-				if(scan.next().equals(ItemList.get(i).getListName())) {
-					UpdateItemList.add(ItemList.get(i));
-				}
-			}
+			// TODO Auto-generated catch block
+			System.out.println("List Is Emty");
+		}				
+		
+		//if(UpdateItemList.size()!=0) {
 			if(UpdateItemList.size()!=0) {
-				for(int i=0;i<UpdateItemList.size();i++) {
-					System.out.println("Item="+UpdateItemList.get(i));
-					do {
-					System.out.println("which is Update Item 1. Name, 2.Detil, 3.Offer, 4.Price 5.All \n enter One Numbrt");
-					switch(Integer.parseInt(scan.next())) {
-					case 1:
-						System.out.println("The Old Item is ="+UpdateItemList.get(i));
-						System.out.println("The Old Item Name is="+UpdateItemList.get(i).getListName()+"Enter The New Item");
-						UpdateItemList.get(i).setListName(scan.next());
-						 if(scan.next().equalsIgnoreCase("y")) {
-		    				  continue;
-		    			  }else {
-		    				  break;
-		    			  }
-					case 2:
-						System.out.println("The Old Item is ="+UpdateItemList.get(i)+"\n ***** Space not Accepted if space need use \"+\"'\"+\".\"+\"'\"+\" ***** \"");						
-						System.out.println("The Old Item Offer is="+UpdateItemList.get(i).getListDesc()+"Enter The Desc Item");
-						UpdateItemList.get(i).setListDesc(scan.next());
-						 if(scan.next().equalsIgnoreCase("y")) {
-		    				  continue;
-		    			  }else {
-		    				  break;
-		    			  }
-					case 3:
-						System.out.println("The Old Item is ="+UpdateItemList.get(i)+"\n ***** Space not Accepted if space need use \"+\"'\"+\".\"+\"'\"+\" ***** \"");						
-						System.out.println("The Old Item Offer is="+UpdateItemList.get(i).getOffer()+"Enter New Offer Item");
-						UpdateItemList.get(i).setOffer(scan.next());
-						 if(scan.next().equalsIgnoreCase("y")) {
-		    				  continue;
-		    			  }else {
-		    				  break;
-		    			  }
-					case 4:
-						System.out.println("The Old Item is ="+UpdateItemList.get(i));						
-						System.out.println("The Old Item Price is="+UpdateItemList.get(i).getPrice()+"Enter New Price Item");
-						UpdateItemList.get(i).setPrice(Integer.parseInt(scan.next()));
-						 if(scan.next().equalsIgnoreCase("y")) {
-		    				  continue;
-		    			  }else {
-		    				  break;
-		    			  }
-					case 5:
-						System.out.println("The Old Item is ="+UpdateItemList.get(i));
-						System.out.println("Enter Item Name");
-						UpdateItemList.get(i).setListName(scan.next());
-						System.out.println("Enter item Details");
-						String Details=scan.next();
-						Details=Details.replace(".", " ");
-						UpdateItemList.get(i).setListDesc(Details);
-						System.out.println("Enter item offer");
-						String Offer=scan.next();
-						Offer=Offer.replace(".", " ");
-						UpdateItemList.get(i).setOffer(Offer);
-						System.out.println("Enter Price");
-						UpdateItemList.get(i).setPrice(Integer.parseInt(scan.next()));
-						
-						 if(scan.next().equalsIgnoreCase("y")) {
-		    				  continue;
-		    			  }else {
-		    				  break;
-		    			  }
-						 default:
-							 return;
-					}
-					
-					}while(true);
-					
-					
-				}
-				System.out.println("Successfully Updated......");
+				Boolean bool=false;
+				//for(int i=0;i<UpdateItemList.size();i++) {
+					//String Data=UpdateItemList.get(i).getListName().toString().trim();
 
-			}else {
+					//System.out.println("i="+Data);
+					//int i=Integer.parseInt(scan.next());
+				System.out.println("Enter One Number");
+				for(int i=0;i<UpdateItemList.size();i++) {
+					String Data=UpdateItemList.get(i).getListName().toString().trim();
+					System.out.println(i+"= "+Data);
+
+				}
+				int i=Integer.parseInt(scan.next());
+				System.out.println("which is Update Item 1. Name, 2.Detil, 3.Offer, 4.Price 5.All \n enter One Numbr");	
+
+				int ds=Integer.parseInt(scan.next());
+
+				if(ds==1) {
+					System.out.println("The Old Item is ="+UpdateItemList.get(i));
+					System.out.println("The Old Item Name is="+UpdateItemList.get(i).getListName()+"Enter The New Item");
+					UpdateItemList.get(i).setListName(scan.next());
+					bool=true;
+				}
+				else if(ds==2) {
+					System.out.println("The Old Item is ="+UpdateItemList.get(i)+"\n ***** Space not Accepted if space need use \"+\"'\"+\".\"+\"'\"+\" ***** \"");						
+					System.out.println("The Old Item Offer is="+UpdateItemList.get(i).getListDesc()+"Enter The Desc Item");
+					UpdateItemList.get(i).setListDesc(scan.next());
+					bool=true;
+				}
+				else if(ds==3) {
+					System.out.println("The Old Item is ="+UpdateItemList.get(i)+"\n ***** Space not Accepted if space need use \"+\"'\"+\".\"+\"'\"+\" ***** \"");						
+					System.out.println("The Old Item Offer is="+UpdateItemList.get(i).getOffer()+"Enter New Offer Item");
+					UpdateItemList.get(i).setOffer(scan.next());
+					bool=true;
+				}
+				else if(ds==4) {
+					System.out.println("The Old Item is ="+UpdateItemList.get(i));						
+					System.out.println("The Old Item Price is="+UpdateItemList.get(i).getPrice()+"Enter New Price Item");
+					UpdateItemList.get(i).setPrice(Integer.parseInt(scan.next()));
+					bool=true;
+				}
+				else if(ds==5) {
+					System.out.println("The Old Item is ="+UpdateItemList.get(i));
+					System.out.println("Enter Item Name");
+					UpdateItemList.get(i).setListName(scan.next());
+					System.out.println("Enter item Details");
+					String Details=scan.next();
+					Details=Details.replace(".", " ");
+					UpdateItemList.get(i).setListDesc(Details);
+					System.out.println("Enter item offer");
+					String Offer=scan.next();
+					Offer=Offer.replace(".", " ");
+					UpdateItemList.get(i).setOffer(Offer);
+					System.out.println("Enter Price");
+					UpdateItemList.get(i).setPrice(Integer.parseInt(scan.next()));
+					bool=true;
+				}
+				else {
+					System.out.println("No Option Available");
+					bool=false;
+
+				}
+				if(bool) {
+				try {
+		 						
+		 			FileOutputStream fos = new FileOutputStream(ItemFile);
+		 			ObjectOutputStream ois=new ObjectOutputStream(fos);
+		 			ois.writeObject(UpdateItemList);
+		 				ois.close();fos.close();
+
+		 			} catch (IOException e) {
+		 						// TODO Auto-generated catch block
+		 						//e.printStackTrace();
+		 			}
+
+
+					}
+				System.out.println("The Item sucessfully Updated");
+
+				}
+					
+					//}while(true);
+					
+					
+				//}
+
+			else {
 				System.out.println("The Item Cannot Be Available");
 			}
 			
-		}else {
-			System.out.println("Item List Is Empty");
-		}
+		
 		
 	}
 	
