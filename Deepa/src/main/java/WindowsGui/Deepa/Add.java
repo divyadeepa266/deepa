@@ -106,7 +106,7 @@ public class Add extends JFrame {
 		btnNewButton.setBackground(new Color(255, 51, 51));
 		btnNewButton.setBounds(121, 227, 89, 23);
 		contentPane.add(btnNewButton);
-		
+		System.out.println("");
 		JButton btnNewButton_1 = new JButton("Cancel");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//cancel
