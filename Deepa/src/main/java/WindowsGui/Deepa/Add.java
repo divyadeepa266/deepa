@@ -96,7 +96,7 @@ public class Add extends JFrame {
 		contentPane.add(textField_2);
 		
 		JButton btnNewButton = new JButton("Save");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton.addActionListener(new ActionListener() {//save ac
 			public void actionPerformed(ActionEvent e) {//save
 				
 				SaveAction();
